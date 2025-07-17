@@ -4,7 +4,7 @@ import requests
 st.markdown("""
     <style>
     .stApp {
-        background-image: url("https://images.unsplash.com/photo-1502920514313-52581002a659?crop=entropy&cs=srgb&fm=jpg&ixid=M3wyMTU1fDB8MXxzZWFyY2h8OXx8bW9uZXklMjB8ZW58MHx8fHwxNzUyNzc1ODE2fDA&ixlib=rb-4.1.0&q=85");
+        background-image: url("https://i.pinimg.com/1200x/04/7b/3f/047b3f4517839ef37e4044a6218ff8c8.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         background-attachment: fixed;
