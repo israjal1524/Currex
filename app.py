@@ -1,39 +1,56 @@
 import streamlit as st
 import requests
 
-# Set background image for entire app
+# Inject background and glass-box CSS
 st.markdown("""
     <style>
     .stApp {
         background-image: url("https://i.pinimg.com/1200x/04/7b/3f/047b3f4517839ef37e4044a6218ff8c8.jpg");
         background-size: cover;
-        background-repeat: no-repeat;
         background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
     }
 
-    /* Glass effect on sidebar */
-    section[data-testid="stSidebar"] {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border-right: 1px solid rgba(255, 255, 255, 0.3);
+    .glass-box {
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 16px;
+        padding: 2rem;
+        margin: 2rem auto;
+        max-width: 600px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     }
 
-    /* Optional: style sidebar title text */
-    .css-1d391kg {
+    h1, label, .stNumberInput label, .stSelectbox label, .stButton button, .stMarkdown, .stTextInput label {
+        color: white !important;
+    }
+
+    .stButton>button {
+        background-color: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
         color: white;
-        font-size: 24px;
+        font-weight: bold;
+        transition: 0.3s ease;
+    }
+
+    .stButton>button:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+        color: black;
     }
     </style>
 """, unsafe_allow_html=True)
 
-# Sidebar content
+# Sidebar (optional)
 st.sidebar.title("Choose Trend")
 
-# Main App Title
-st.title("CURREX")
+# Main app UI inside glass box
+st.markdown('<div class="glass-box">', unsafe_allow_html=True)
 
-# Input & conversion logic
+st.title(" CURREX")
+
 amount = st.number_input("Enter the Amount of Exchange in INR", min_value=1)
 target_currency = st.selectbox("Exchange to currency", ["USD", "CAD", "PKR", "JPY", "EUR"])
 
@@ -47,4 +64,6 @@ if st.button("Convert"):
         converted = rate * amount
         st.success(f"{amount} INR = {converted:.2f} {target_currency}")
     else:
-        st.error("Failed to fetch exchange rates.")
+        st.error(" Failed to fetch exchange rates.")
+
+st.markdown('</div>', unsafe_allow_html=True)
