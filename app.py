@@ -9,6 +9,10 @@ st.markdown("""
         background-repeat: no-repeat;
         background-attachment: fixed;
     }
+    .overlay{
+    background-color: rgba(30 30 30 / 20%);
+    backdrop-filter: blur(10px)
+}
     </style>
 """, unsafe_allow_html=True)
 
