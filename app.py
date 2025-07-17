@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-# Background and glass styling
+# Inject CSS for full glass container
 st.markdown("""
     <style>
     .stApp {
@@ -10,30 +10,34 @@ st.markdown("""
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    div[data-testid="glass-box"] {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+    .glass-container {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
         border-radius: 20px;
-        padding: 2rem;
-        margin: 3rem auto;
+        padding: 3rem 2rem;
         max-width: 600px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+        width: 90%;
+        margin: auto;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     }
 
-    /* Text and button styling inside the glass box */
-    h1, label, .stNumberInput label, .stSelectbox label, .stMarkdown, .stTextInput label {
+    h1, label, .stNumberInput label, .stSelectbox label, .stMarkdown, .stTextInput label, .stSuccess, .stError {
         color: white !important;
     }
 
     .stButton > button {
-        background-color: rgba(255, 255, 255, 0.15);
+        background-color: rgba(255, 255, 255, 0.2);
         color: white;
         border: 1px solid rgba(255, 255, 255, 0.3);
         font-weight: bold;
+        transition: 0.3s;
     }
 
     .stButton > button:hover {
@@ -43,12 +47,9 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Optional sidebar
-st.sidebar.title("Choose Trend")
-
-#  Glass container for all widgets
+#  Start of GLASS UI container
 with st.container():
-    st.markdown('<div data-testid="glass-box">', unsafe_allow_html=True)
+    st.markdown('<div class="glass-container">', unsafe_allow_html=True)
 
     st.title(" CURREX")
 
@@ -65,6 +66,6 @@ with st.container():
             converted = rate * amount
             st.success(f"{amount} INR = {converted:.2f} {target_currency}")
         else:
-            st.error("Failed to fetch exchange rates.")
+            st.error(" Failed to fetch exchange rates.")
 
     st.markdown('</div>', unsafe_allow_html=True)
