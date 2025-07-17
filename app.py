@@ -1,14 +1,9 @@
 import streamlit as st
 import requests
 
-# Custom CSS for background and glass box
+# Inject background + styling
 st.markdown("""
     <style>
-    body {
-        margin: 0;
-        padding: 0;
-    }
-
     .stApp {
         background-image: url("https://i.pinimg.com/1200x/04/7b/3f/047b3f4517839ef37e4044a6218ff8c8.jpg");
         background-size: cover;
@@ -16,7 +11,8 @@ st.markdown("""
         background-position: center;
     }
 
-    .glass-box-wrapper {
+    /* Use this to center the glass-box on screen */
+    .glass-container {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -28,7 +24,7 @@ st.markdown("""
         backdrop-filter: blur(14px);
         -webkit-backdrop-filter: blur(14px);
         border-radius: 20px;
-        padding: 3rem;
+        padding: 30px;
         width: 90%;
         max-width: 600px;
         border: 1px solid rgba(255, 255, 255, 0.2);
@@ -39,25 +35,25 @@ st.markdown("""
         color: white !important;
     }
 
-    .stButton>button {
+    .stButton > button {
         background-color: rgba(255, 255, 255, 0.15);
         border: 1px solid rgba(255, 255, 255, 0.3);
         color: white;
         font-weight: bold;
-        transition: 0.3s ease;
+        transition: 0.3s;
     }
 
-    .stButton>button:hover {
+    .stButton > button:hover {
         background-color: rgba(255, 255, 255, 0.4);
         color: black;
     }
     </style>
 """, unsafe_allow_html=True)
 
-# Create the wrapper first to control layout
-st.markdown('<div class="glass-box-wrapper"><div class="glass-box">', unsafe_allow_html=True)
+# Begin the layout: glass container + box
+st.markdown('<div class="glass-container"><div class="glass-box">', unsafe_allow_html=True)
 
-# Everything inside this will be in the glass box
+# Now put ALL Streamlit widgets inside this area
 st.title(" CURREX")
 
 amount = st.number_input("Enter the Amount of Exchange in INR", min_value=1)
@@ -75,5 +71,5 @@ if st.button("Convert"):
     else:
         st.error(" Failed to fetch exchange rates.")
 
-# Close the wrapper divs
+# Close the glass container
 st.markdown('</div></div>', unsafe_allow_html=True)
