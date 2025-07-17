@@ -9,12 +9,20 @@ st.markdown("""
         background-repeat: no-repeat;
         background-attachment: fixed;
     }
-    .overlay{
-    background-color: rgba(30 30 30 / 20%);
-    backdrop-filter: blur(10px)
-}
     </style>
 """, unsafe_allow_html=True)
+st.sidebar.title("Choose Trend")
+
+
+st.sidebar.markdown(''' 
+background: rgba(45, 41, 41, 0.24);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5.8px);
+-webkit-backdrop-filter: blur(5.8px);
+border: 1px solid rgba(45, 41, 41, 0.2);
+''',unsafe_allow_html=True)
+
 
 st.title("CUREX")
 amount=st.number_input("Enter the Amount of Exchang in INR",min_value=1)
