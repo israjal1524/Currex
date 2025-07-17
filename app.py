@@ -14,7 +14,7 @@ st.markdown("""
 st.sidebar.title("Choose Trend")
 
 
-st.markdown("""
+st.sidebar.markdown("""
     <style>
     .glass-box {
         background: rgba(255, 255, 255, 0.1);
