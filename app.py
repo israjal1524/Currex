@@ -14,14 +14,21 @@ st.markdown("""
 st.sidebar.title("Choose Trend")
 
 
-st.sidebar.markdown(''' 
-background: rgba(45, 41, 41, 0.24);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(5.8px);
--webkit-backdrop-filter: blur(5.8px);
-border: 1px solid rgba(45, 41, 41, 0.2);
-''',unsafe_allow_html=True)
+st.markdown("""
+    <style>
+    .glass-box {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 2rem;
+        margin: 2rem 0;
+        color: white;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 
 
 st.title("CUREX")
